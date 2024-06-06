@@ -1,0 +1,52 @@
+.outerdiv {
+    height: 500px;
+    width: 50%;
+    text-align: center;
+
+    margin-top: "70px";
+    z-index: 2
+}
+
+.firstrow {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.inputfield {
+    width: 60%;
+    border: none;
+    outline: none;
+    color: grey;
+    background-color: white;
+    height: 40px;
+
+}
+
+
+
+.btnOne {
+    width: 3px;
+    border: none;
+    background-color: darkslategrey;
+    color: grey;
+    background-color: white;
+    height: 40px;
+}
+
+.weatherIcon {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+}
+
+.information {
+    color: #70757a;
+}
+
+.streetIcon {
+    margin-right: 10px;
+    color: rgb(54, 54, 105);
+}
