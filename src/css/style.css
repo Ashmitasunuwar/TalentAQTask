@@ -3,19 +3,18 @@
     width: 50%;
     text-align: center;
 
-    margin-top: "70px";
+    padding-top: 70px;
     z-index: 2
 }
 
 .firstrow {
-    margin-top: 70px;
     display: flex;
     justify-content: center;
 
 }
 
 .inputfield {
-    width: 60%;
+    width: 55%;
     border: none;
     outline: none;
     color: grey;
@@ -27,7 +26,7 @@
 
 
 .btnOne {
-    width: 3px;
+    width: 10%;
     border: none;
     background-color: darkslategrey;
     color: grey;
@@ -37,16 +36,26 @@
 
 .weatherIcon {
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-right: 20px;
 
 }
 
 .information {
     color: #70757a;
+    display: flex;
+    justify-content: left;
 }
 
 .streetIcon {
     margin-right: 10px;
     color: rgb(54, 54, 105);
+}
+
+.weatherToday {
+    position: absolute;
+    top: 35px;
+    right: 80px;
+    color: black;
+    font-size: x-large;
 }
