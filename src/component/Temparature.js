@@ -27,8 +27,7 @@ function Temparature() {
         min_temp: '',
         mx_temp: ''
     });
-
-    const [hours, sethours] = useState();
+    const [hour, setHour] = useState(null);
 
     useEffect(() => {
         fetch('https://api.ipify.org').then(response => response.text()).then(res => setIpAddress(res));
@@ -54,10 +53,7 @@ function Temparature() {
 
     }, [city])
 
-    useEffect(() => {
-        console.log('hrs', hours)
-
-    }, [hours])
+    useEffect(() => { console.log('hrs', hour); }, [hour])
 
 
     const FORECAST = `http://api.weatherapi.com/v1/forecast.json?key=b9c6c403476b4907888103557240606&q=`;
@@ -70,8 +66,7 @@ function Temparature() {
 
                     console.log("result forecast ", result)
                     if (result.forecast) {
-                        let hours = result.forecast.forecastday[0].hour;
-                        sethours(hours);
+                        setHour(result.forecast.forecastday[0].hour);
                         setSearchTerm({
                             name: result.location.name,
                             region: result.location.region,
@@ -86,10 +81,7 @@ function Temparature() {
                             mx_temp: result.forecast.forecastday[0].day.maxtemp_c,
                             min_temp: result.forecast.forecastday[0].day.mintemp_c,
                             date: result.forecast.forecastday[0].date,
-
                         })
-
-
                     }
                 })
         }
@@ -110,8 +102,6 @@ function Temparature() {
         let forecastDate = new Date(searchTerm.date);
         return dayNames[forecastDate.getDay()]
     }
-
-
 
     return (
         <div style={backGrdStyle}>
@@ -159,10 +149,8 @@ function Temparature() {
 
 
                 <div className='forecastDays'>
-                    <ForeCast city={city} />
+                    <ForeCast city={city} hour={hour} time={searchTerm.time} />
                 </div>
-
-
             </div>
         </div>
     )
