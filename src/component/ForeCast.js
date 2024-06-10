@@ -1,35 +1,24 @@
 import { render } from '@testing-library/react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import '../css/style.css'
 
-function ForeCast({ city, hour, time }) {
-    const date = new Date(time)
-    console.log(date);
-    const totalsHours = Math.floor(date.getHours() + (date.getMinutes() / 60) + (date.getSeconds() / 3600))
-    console.log('totalHors', totalsHours);
-
-    const [hourCard, setCard] = useState({
-        temperature: '',
-        humidity: '',
-        wind: '',
-        description: '',
-    }
-    );
-    const renderedCard = () => {
-        console.log('renderedCard')
-
-        if (hour) {
-            return hour.map((obj) => console.log('map', obj))
-        }
-        return 0
-    }
-
-    return (
+function ForeCast({ obj }) {
+    console.log('comp Fore--Cast', obj)
+    return (<div className>
+        <div className=''>
+            {obj.time}
+        </div>
         <div>
-
-            cloud:  {renderedCard()}
+            {obj.temp_c}°C
 
         </div>
-    )
+        <div>   {obj.humidity}</div>
+
+    </div>)
+
 }
+
+
+
 
 export default ForeCast

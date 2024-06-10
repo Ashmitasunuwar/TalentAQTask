@@ -102,6 +102,51 @@ function Temparature() {
         let forecastDate = new Date(searchTerm.date);
         return dayNames[forecastDate.getDay()]
     }
+    const date = new Date(searchTerm.time)
+    console.log(date);
+    const totalsHours = Math.floor(date.getHours() + (date.getMinutes() / 60) + (date.getSeconds() / 3600))
+    console.log('totalHors', totalsHours);
+
+    let arr = [];
+
+
+
+    const renderedCard = () => {
+        if (hour) {
+            hour.map((obj, index) => {
+                if (index === totalsHours) {
+                    let i = 1;
+                    do {
+                        //   console.log("111 ", totalsHours, index + i)
+                        arr.push(hour[(index + i)])
+                        i++;
+
+                    } while (i <= 5)
+                }
+            })
+            return true;
+        }
+        else {
+            return false
+        }
+    }
+
+    const renderprofileCard = () => {
+        console.log('@card comp called ', arr)
+        if (renderedCard()) {
+            const abc = arr.map(
+                (obj, i) => {
+                    console.log('renderprofileCard', obj)
+                    return (<ForeCast className='objectDiv' key={i} obj={obj} />)
+                }
+            )
+            return abc;
+        }
+        else {
+            console.log('arr not print ', arr)
+        }
+
+    }
 
     return (
         <div style={backGrdStyle}>
@@ -149,7 +194,8 @@ function Temparature() {
 
 
                 <div className='forecastDays'>
-                    <ForeCast city={city} hour={hour} time={searchTerm.time} />
+                    {renderprofileCard()}
+
                 </div>
             </div>
         </div>
