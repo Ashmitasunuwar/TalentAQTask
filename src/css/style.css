@@ -58,8 +58,14 @@
     position: absolute;
     top: 35px;
     right: 80px;
-    color: black;
+    color: #3b5cbfd6;
     font-size: x-large;
+}
+
+.Titletag {
+    text-align: center;
+    margin: 25px;
+    color: #7d8dbde0;
 }
 
 .forecastDays {

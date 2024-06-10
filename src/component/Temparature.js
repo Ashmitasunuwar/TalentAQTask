@@ -27,7 +27,7 @@ function Temparature() {
         min_temp: '',
         mx_temp: ''
     });
-    const [hour, setHour] = useState(null);
+    const [hour, setHour] = useState([]);
 
     useEffect(() => {
         fetch('https://api.ipify.org').then(response => response.text()).then(res => setIpAddress(res));
@@ -44,7 +44,9 @@ function Temparature() {
             fetchIpinfO();
         }
     }, [ipAddress])
-
+    useEffect(() => {
+        console.log('hour arr ', hour)
+    }, [hour])
 
     useEffect(() => {
         if (city) {
@@ -61,11 +63,12 @@ function Temparature() {
     const fetchTemp = async () => {
 
         if (city) {
-            await fetch(FORECAST + `${city}` + `&days=1&aqi=no&alerts=no`).then(response => response.json())
+            await fetch(FORECAST + `${city}` + `&days=2&aqi=no&alerts=no`).then(response => response.json())
                 .then(result => {
                     console.log("result forecast ", result)
                     if (result.forecast) {
-                        setHour(result.forecast.forecastday[0].hour);
+
+                        setHour(hour.concat(result.forecast.forecastday[0].hour, result.forecast.forecastday[1].hour));
                         setSearchTerm({
                             name: result.location.name,
                             region: result.location.region,
@@ -122,6 +125,7 @@ function Temparature() {
 
                     } while (i <= 5)
                 }
+
             })
             return true;
         }
@@ -191,7 +195,9 @@ function Temparature() {
                 </div>
 
             </div>
+            <h3 className='Titletag'>Upcoming weather predictions</h3>
             <div className='forecastDays'>
+
                 {renderprofileCard()}
             </div>
         </div>
