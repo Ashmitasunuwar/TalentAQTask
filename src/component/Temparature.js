@@ -63,7 +63,6 @@ function Temparature() {
         if (city) {
             await fetch(FORECAST + `${city}` + `&days=1&aqi=no&alerts=no`).then(response => response.json())
                 .then(result => {
-
                     console.log("result forecast ", result)
                     if (result.forecast) {
                         setHour(result.forecast.forecastday[0].hour);
@@ -137,7 +136,7 @@ function Temparature() {
             const abc = arr.map(
                 (obj, i) => {
                     console.log('renderprofileCard', obj)
-                    return (<ForeCast className='objectDiv' key={i} obj={obj} />)
+                    return (<ForeCast className='ForeCastObj' key={i} obj={obj} />)
                 }
             )
             return abc;
@@ -154,7 +153,6 @@ function Temparature() {
 
                 <div className='row firstrow' >
                     <input className='col-4 inputfield' type='search' value={city} onChange={(e) => { handleSetCity(e) }} />
-
                 </div>
 
                 <div className=' row information'>
@@ -181,9 +179,9 @@ function Temparature() {
                     </div>
 
                     <div>
-                        <h6> <WiHumidity /> humidity: {searchTerm.humidity} %
+                        <h6> <WiHumidity style={{ color: 'blue' }} /> humidity: {searchTerm.humidity} %
                         </h6>
-                        <h6><GiPaperWindmill />wind: {searchTerm.wind} km/hr
+                        <h6><GiPaperWindmill style={{ color: 'blue' }} />wind: {searchTerm.wind} km/hr
                         </h6>
                         <h6>
                             {searchTerm.text}
@@ -192,11 +190,9 @@ function Temparature() {
                     </div>
                 </div>
 
-
-                <div className='forecastDays'>
-                    {renderprofileCard()}
-
-                </div>
+            </div>
+            <div className='forecastDays'>
+                {renderprofileCard()}
             </div>
         </div>
     )
